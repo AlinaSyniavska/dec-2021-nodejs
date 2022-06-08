@@ -1,54 +1,27 @@
-/*
-const fs = require('fs');
-const path = require('path');
-
-const sortFolder = (read, gender, write) => {
-    fs.readdir(path.join(__dirname, read), (err, files) => {
-        if (err) return console.log(err);
-
-        files.forEach((file) => {
-            const readFolderPath = path.join(__dirname, read, file);
-            fs.readFile(readFolderPath, (err1, files1) => {
-                if (err1) return console.log(err1);
-
-                const user = JSON.parse(files1.toString());
-
-                if (user.gender === gender) {
-                    fs.rename(readFolderPath, path.join(__dirname, write, file), (err2) => {
-                        err2 && console.log(err2);
-                    });
-                }
-            });
-        })
-    });
-}
-
-sortFolder('boys', 'female', 'girls');
-sortFolder('girls', 'male', 'boys');
-*/
-
 const fs = require('fs/promises');
 const path = require('path');
 
-const sortFolder = async (read, gender, write) => {
+const reader = async (read) => {
     try {
-        const files = await fs.readdir(path.join(__dirname, read));
+        const files = await fs.readdir(read);
+
+        console.log(files);
 
         for (const file of files) {
-            const readFolderPath = path.join(__dirname, read, file);
-            const data = await fs.readFile(readFolderPath);
+            const statistic = await fs.stat(path.join(read, file));
 
-            const user = JSON.parse(data.toString());
+            if (statistic.isFile()) {
+                await fs.rename(path.join(read, file), path.join(__dirname, 'exitFolder', file));
+            }
 
-            if (user.gender === gender) {
-                await fs.rename(readFolderPath, path.join(__dirname, write, file));
+            if (statistic.isDirectory()) {
+                await reader(path.join(read, file));
             }
         }
     } catch (e) {
         console.log(e);
     }
-
 }
 
-sortFolder('boys', 'female', 'girls');
-sortFolder('girls', 'male', 'boys');
+reader(path.join(__dirname, 'folderForRead')).then();
+
