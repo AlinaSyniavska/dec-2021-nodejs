@@ -29,7 +29,7 @@ module.exports = {
     },
 
     update: async (req, res, next) => {
-        try{
+        try {
             const {id} = req.params;
             // const updatedUser = await userService.updateOne({_id: id}, req.body);
             const updatedUser = await userService.updateOne({_id: id}, req.dataForUpdate);
@@ -44,6 +44,28 @@ module.exports = {
             const {id} = req.params;
             await userService.deleteOne({_id: id});
             res.sendStatus(204);
+        } catch (e) {
+            next(e);
+        }
+    },
+
+    addFieldSkills: async (req, res, next) => {
+        try {
+            const {skills} = req.body;
+            const modifiedCount = await userService.addFieldToAll(skills);
+            res.status(201).json(modifiedCount);
+        } catch (e) {
+            next(e);
+        }
+    },
+
+    addSkillsById: async (req, res, next) => {
+        try {
+            const {id} = req.params;
+            const {skills} = req.body;
+            const modifiedCount = await userService.addOneSkills(skills, {_id: id});
+
+            res.status(201).json(modifiedCount);
         } catch (e) {
             next(e);
         }

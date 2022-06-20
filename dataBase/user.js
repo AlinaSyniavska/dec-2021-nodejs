@@ -24,7 +24,13 @@ const UserSchema = new Schema({
         type: String,
         required: true,
 
-    }
+    },
+
+    skills: [{
+        type: String,
+        trim: true,
+        lowercase: true
+    }]
 }, {timestamps: true});
 
 module.exports = model('user', UserSchema);

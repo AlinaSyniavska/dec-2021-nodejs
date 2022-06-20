@@ -20,4 +20,14 @@ module.exports = {
     deleteOne: (params = {}) => {
         return User.deleteOne(params);
     },
+
+    addFieldToAll: (fieldData, params={}) => {
+        const skillsList = fieldData.split(';');
+        return User.updateMany(params, {$set: {skills: skillsList}});
+    },
+
+    addOneSkills: (fieldData, params={}) => {
+        const skillsList = fieldData.split(';');
+        return User.updateOne(params, {$addToSet: {skills: skillsList}});
+    },
 }
