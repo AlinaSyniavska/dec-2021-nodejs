@@ -27,7 +27,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"name\": \"Alex\",\r\n    \"age\": 10,\r\n    \"email\": \"alex2@gmail.com\",\r\n    \"password\": \"12345678\"\r\n}",
+					"raw": "{\r\n    \"name\": \"Alina     \",\r\n    \"age\": 33,\r\n    \"email\": \"ALI22@gmail.com\",\r\n    \"password\": \"12345678\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
