@@ -12,9 +12,20 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{HOST}}users",
+					"raw": "{{HOST}}users?age=33",
 					"host": [
 						"{{HOST}}users"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "Ivan",
+							"disabled": true
+						},
+						{
+							"key": "age",
+							"value": "33"
+						}
 					]
 				}
 			},
@@ -27,7 +38,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"name\": \"Alex\",\r\n    \"age\": 10,\r\n    \"email\": \"alex2@gmail.com\",\r\n    \"password\": \"12345678\"\r\n}",
+					"raw": "{\r\n    \"name\": \"Ivan\",\r\n    \"age\": 33,\r\n    \"email\": \"im197@gmail.com\",\r\n    \"password\": \"5&Ien22672222\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -50,7 +61,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"age\": 21,\r\n    \"name\": \"Sue\"\r\n}",
+					"raw": "{\r\n    \"age\": 18\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -68,7 +79,7 @@
 					"variable": [
 						{
 							"key": "id",
-							"value": "62ab5fda600e49def7405459"
+							"value": "62b3483b41f07a17d7b6ef57"
 						}
 					]
 				}
@@ -91,7 +102,7 @@
 					"variable": [
 						{
 							"key": "id",
-							"value": "62ab1c95c81a4ba984a073fb"
+							"value": "62b3483b41f07a17d7b6ef57"
 						}
 					]
 				}
@@ -114,7 +125,7 @@
 					"variable": [
 						{
 							"key": "id",
-							"value": "62ab5057feefe88265dad021"
+							"value": "62b340e640fece07d71da40a"
 						}
 					]
 				}

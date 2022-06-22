@@ -1,10 +1,10 @@
 const express = require('express');
 const mongoose = require('mongoose');
 
-const {configs} = require("./config");
+const {config} = require("./configs");
 const {userRouter} = require("./routes");
 
-mongoose.connect(configs.MONGO_URL);
+mongoose.connect(config.MONGO_URL);
 
 const app = express();
 
@@ -26,8 +26,8 @@ app.use((err, req, res, next) => {
         });
 });
 
-app.listen(configs.PORT, () => {
-    console.log(`Started on port ${configs.PORT}`);
+app.listen(config.PORT, () => {
+    console.log(`Started on port ${config.PORT}`);
 })
 
 

@@ -1,10 +1,12 @@
-const {userService} = require("../services");
+const {userService, passwordService} = require("../services");
+const {userPresenter} = require("../presenters");
 
 module.exports = {
     getAll: async (req, res, next) => {
         try {
-            const users = await userService.findAll();
-            res.json(users);
+            const users = await userService.findAll(req.query).exec();
+            const usersForResponse = users.map(user => userPresenter.userResponse(user));
+            res.json(usersForResponse);
         } catch (e) {
             next(e);
         }
@@ -12,8 +14,10 @@ module.exports = {
 
     create: async (req, res, next) => {
         try {
-            const newUser = await userService.createOne(req.body);
-            res.status(201).json(newUser);
+            const hashPassword = await passwordService.hashPassword(req.body.password);
+            const newUser = await userService.createOne({...req.body, password: hashPassword});
+            const userForResponse = userPresenter.userResponse(newUser);
+            res.status(201).json(userForResponse);
         } catch (e) {
             next(e);
         }
@@ -22,7 +26,8 @@ module.exports = {
     getById: async (req, res, next) => {
         try {
             const {user} = req;
-            res.json(user);
+            const userForResponse = userPresenter.userResponse(user);
+            res.json(userForResponse);
         } catch (e) {
             next(e);
         }
@@ -31,9 +36,9 @@ module.exports = {
     update: async (req, res, next) => {
         try{
             const {id} = req.params;
-            // const updatedUser = await userService.updateOne({_id: id}, req.body);
-            const updatedUser = await userService.updateOne({_id: id}, req.dataForUpdate);
-            res.status(201).json(updatedUser);
+            const updatedUser = await userService.updateOne({_id: id}, req.body);
+            const userForResponse = userPresenter.userResponse(updatedUser);
+            res.status(201).json(userForResponse);
         } catch (e) {
             next(e);
         }
@@ -48,4 +53,4 @@ module.exports = {
             next(e);
         }
     },
-}
+};

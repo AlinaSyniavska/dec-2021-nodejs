@@ -1,5 +1,6 @@
 const {userService} = require("../services");
 const {CustomError} = require("../errors");
+const {userValidator, userQueryValidator} = require("../validators");
 
 module.exports = {
     isUserPresent: async (req, res, next) => {
@@ -39,34 +40,13 @@ module.exports = {
 
     isUserValidForCreate: (req, res, next) => {
         try {
-            const {name, email, age, password} = req.body;
+            const {error, value} = userValidator.newUserValidator.validate(req.body);
 
-            const emailRegex = /^[-!#$%&'*+\/0-9=?A-Z^_a-z{|}~](\.?[-!#$%&'*+\/0-9=?A-Z^_a-z`{|}~])*@[a-zA-Z0-9](-*\.?[a-zA-Z0-9])*\.[a-zA-Z](-?[a-zA-Z0-9])+$/;
-
-            if (!name || !email || !password) {
-                return next(new CustomError('Some field is missing'));
+            if (error) {
+                return next(new CustomError(error.details[0].message));
             }
 
-            if (name.length < 2) {
-                return next(new CustomError('Name should include at least 2 symbols'));
-            }
-
-            if (!Number.isInteger(age) || age < 0 || age > 100) {
-                return next(new CustomError('Age is not valid'));
-            }
-
-            if (password.length < 8) {
-                return next(new CustomError('Password should include at least 8 symbols'));
-            }
-
-            const valid = emailRegex.test(email);
-            const parts = email.split("@");
-            const domainParts = parts[1].split(".");
-
-            if (email.length > 254 || !valid || !email.includes('@') || parts[0].length > 64 || domainParts.some((part) => {part.length > 63})) {
-                return next(new CustomError('Email is not valid'));
-            }
-
+            req.body = value;
             next();
         } catch (e) {
             next(e);
@@ -75,17 +55,24 @@ module.exports = {
 
     isUserValidForUpdate: (req, res, next) => {
         try {
-            const {name, age} = req.body;
-
-            if (age && !Number.isInteger(age) || age < 0 || age > 100) {
-                return next(new CustomError('Age is not valid'));
+            const {error, value} = userValidator.updateUserValidator.validate(req.body);
+            if(error) {
+                return next(new CustomError(error.details[0].message));
             }
+            req.body = value;
+            next();
+        } catch (e) {
+            next(e);
+        }
+    },
 
-            if (name && name.length < 2) {
-                return next(new CustomError('Name should include at least 2 symbols'));
+    isUserQueryValid: (req, res, next) => {
+        try {
+            const {error, value} = userQueryValidator.allUsersValidator.validate(req.query);
+            if(error) {
+                return next(new CustomError(error.details[0].message));
             }
-
-            req.dataForUpdate = {name, age};
+            req.query = value;
             next();
         } catch (e) {
             next(e);
