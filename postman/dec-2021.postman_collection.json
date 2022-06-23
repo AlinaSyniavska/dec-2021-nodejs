@@ -1,7 +1,7 @@
 {
 	"info": {
-		"_postman_id": "f33b48e9-4ec8-46a6-a92f-51e31aee34f3",
-		"name": "dec-2021",
+		"_postman_id": "c9e6c1a0-e0e9-477e-92e1-67d142365c5f",
+		"name": "dec-2021 JWT",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "20761832"
 	},
@@ -12,7 +12,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{HOST}}users?age=33",
+					"raw": "{{HOST}}users",
 					"host": [
 						"{{HOST}}users"
 					],
@@ -24,7 +24,8 @@
 						},
 						{
 							"key": "age",
-							"value": "33"
+							"value": "33",
+							"disabled": true
 						}
 					]
 				}
@@ -38,7 +39,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"name\": \"Ivan\",\r\n    \"age\": 33,\r\n    \"email\": \"im197@gmail.com\",\r\n    \"password\": \"5&Ien22672222\"\r\n}",
+					"raw": "{\r\n    \"name\": \"Natan\",\r\n    \"age\": 29,\r\n    \"email\": \"NAtannel@gmail.com\",\r\n    \"password\": \"5&Ien22672222\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -49,6 +50,32 @@
 					"raw": "{{HOST}}users",
 					"host": [
 						"{{HOST}}users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "auth",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"NAtannel@gmail.com\",\r\n    \"password\": \"5&Ien22672222\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{HOST}}auth/login",
+					"host": [
+						"{{HOST}}auth"
+					],
+					"path": [
+						"login"
 					]
 				}
 			},
@@ -113,7 +140,13 @@
 			"name": "user by ID",
 			"request": {
 				"method": "DELETE",
-				"header": [],
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NTYwMTQ2NzQsImV4cCI6MTY1NjAxNTU3NH0.46SJcQui6HXUnYcDsR6SOCgIDBZ1yWrNNGCxFGocJ7Y",
+						"type": "text"
+					}
+				],
 				"url": {
 					"raw": "{{HOST}}users/:id",
 					"host": [
@@ -125,7 +158,7 @@
 					"variable": [
 						{
 							"key": "id",
-							"value": "62b340e640fece07d71da40a"
+							"value": "62b378f48ca226b4cd96ab63"
 						}
 					]
 				}

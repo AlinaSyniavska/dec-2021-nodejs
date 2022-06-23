@@ -20,6 +20,23 @@ module.exports = {
         }
     },
 
+    isUserLoginPresent: async (req, res, next) => {
+        try {
+            const {email} = req.body;
+
+            const userByEmail = await userService.findOne({email});
+
+            if(!userByEmail){
+                return next(new CustomError(`User with id ${email} not found`, 404));
+            }
+
+            req.user = userByEmail;
+
+            next();
+        } catch (e) {
+            next(e);
+        }
+    },
 
     isUserUniq: async (req, res, next) => {
         try {
