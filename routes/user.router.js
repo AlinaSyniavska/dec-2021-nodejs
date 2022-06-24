@@ -17,6 +17,7 @@ userRouter.get('/:id',
     userController.getById);
 userRouter.put('/:id',
     commonMiddleware.isIdValid,
+    authMiddleware.checkAccessToken,
     userMiddleware.isUserValidForUpdate,
     userMiddleware.isUserPresent,
     userController.update);

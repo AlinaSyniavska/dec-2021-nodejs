@@ -3,4 +3,5 @@ module.exports = {
     MONGO_URL: 'mongodb://localhost:27017/dec',
     ACCESS_TOKEN: 'someSecretKeyForAccess',
     REFRESH_TOKEN: 'someSecretKeyForRefresh',
+    AUTHORIZATION: 'Authorization',
 };
