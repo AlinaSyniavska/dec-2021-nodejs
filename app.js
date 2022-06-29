@@ -1,6 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const cors = require('cors');
+// const cors = require('cors');
 
 const { config } = require('./configs');
 const { userRouter, authRouter } = require('./routes');
@@ -8,7 +8,7 @@ const { userRouter, authRouter } = require('./routes');
 mongoose.connect(config.MONGO_URL);
 
 const app = express();
-app.use(cors());
+// app.use(cors());
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
