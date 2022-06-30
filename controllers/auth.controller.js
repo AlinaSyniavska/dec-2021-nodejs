@@ -10,7 +10,7 @@ module.exports = {
             const {password, email} = req.body;
 
             await emailService.sendMail('alina22syniavska@gmail.com', emailActionEnum.WELCOME, {userName: name});
-            // await emailService.sendMail(email, emailActionEnum.WELCOME);
+            // await emailService.sendMail(email, emailActionEnum.WELCOME, {userName: name});
 
             await passwordService.comparePassword(hashPassword, password);
 

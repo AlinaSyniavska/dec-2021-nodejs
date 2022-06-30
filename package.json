@@ -1,6 +1,10 @@
 {
   "name": "dec-2021-nodejs",
   "version": "1.0.0",
+  "scripts": {
+    "start:dev": "MODE=dev nodemon app.js",
+    "start:prod": "MODE=prod node app.js"
+  },
   "dependencies": {
     "bcrypt": "^5.0.1",
     "cors": "^2.8.5",
@@ -11,6 +15,7 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.3.8",
     "nodemailer": "^6.7.5",
+    "nodemon": "^2.0.18",
     "pug": "^3.0.2"
   },
   "devDependencies": {
