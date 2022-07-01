@@ -36,6 +36,39 @@
 					"response": []
 				},
 				{
+					"name": "users ngrok",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://adf9-8-18-50-76.eu.ngrok.io/users",
+							"protocol": "https",
+							"host": [
+								"adf9-8-18-50-76",
+								"eu",
+								"ngrok",
+								"io"
+							],
+							"path": [
+								"users"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "Ivan",
+									"disabled": true
+								},
+								{
+									"key": "age",
+									"value": "33",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "create user",
 					"request": {
 						"method": "POST",
@@ -71,7 +104,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"Nata\"\r\n}",
+							"raw": "{\r\n    \"name\": \"Ali\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -190,6 +223,43 @@
 							],
 							"path": [
 								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "forgotPassword",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"alina22syniavska@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}auth/forgotPassword",
+							"host": [
+								"{{HOST}}auth"
+							],
+							"path": [
+								"forgotPassword"
 							]
 						}
 					},

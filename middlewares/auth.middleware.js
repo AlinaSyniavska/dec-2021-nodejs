@@ -90,4 +90,19 @@ module.exports = {
             next(e);
         }
     },
+
+    isEmailValid: (req, res, next) => {
+        try {
+            const {error, value} = authValidator.forgotPassword.validate(req.body);
+
+            if (error) {
+                return next(new CustomError('Wrong email'));
+            }
+
+            res.body = value;
+            next();
+        } catch (e) {
+            next(e);
+        }
+    },
 };

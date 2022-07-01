@@ -2,8 +2,8 @@
   "name": "dec-2021-nodejs",
   "version": "1.0.0",
   "scripts": {
-    "start:dev": "MODE=dev nodemon app.js",
-    "start:prod": "MODE=prod node app.js"
+    "start:dev": "set MODE=dev&& nodemon app.js",
+    "start:prod": "set MODE=prod&& node app.js"
   },
   "dependencies": {
     "bcrypt": "^5.0.1",
@@ -15,11 +15,13 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.3.8",
     "nodemailer": "^6.7.5",
+    "nodemailer-express-handlebars": "^5.0.0",
     "nodemon": "^2.0.18",
     "pug": "^3.0.2"
   },
   "devDependencies": {
     "@types/email-templates": "^8.0.4",
-    "@types/nodemailer": "^6.4.4"
+    "@types/nodemailer": "^6.4.4",
+    "@types/nodemailer-express-handlebars": "^4.0.2"
   }
 }
