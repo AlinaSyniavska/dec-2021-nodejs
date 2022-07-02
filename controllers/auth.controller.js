@@ -95,7 +95,7 @@ module.exports = {
 
             await emailService.sendMailHbs(email, emailActionEnum.FORGOT_PASSWORD, {name});
 
-            // await emailService.sendMail(email, emailActionEnum.FORGOT_PASSWORD, {userName: name}); //real code
+            // await emailService.sendMail(email, emailActionEnum.FORGOT_PASSWORD, {userName: name, token}); //real code
             await emailService.sendMail(
                 'alina22syniavska@gmail.com',
                 emailActionEnum.FORGOT_PASSWORD,

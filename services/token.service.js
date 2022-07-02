@@ -63,7 +63,5 @@ module.exports = {
             // throw new CustomError('Token not valid', 401);
             throw new Error(e.message);
         }
-
-
     }
 };
