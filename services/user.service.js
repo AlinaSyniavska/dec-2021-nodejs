@@ -11,6 +11,7 @@ module.exports = {
 
     createOne: (user) => {
         return User.create(user);
+        // return User.createUserWithHashPassword(user); //UserSchema.statics
     },
 
     updateOne: (params = {}, userData, options = {new: true}) => {

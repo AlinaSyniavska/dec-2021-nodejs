@@ -18,11 +18,13 @@ module.exports = {
             const {email, password, name} = req.body;
 
             const hashPassword = await passwordService.hashPassword(password);
+            const newUser = await userService.createOne({...req.body, password: hashPassword});
+            // const newUser = await userService.createOne(req.body);
+
+            const userForResponse = userPresenter.userResponse(newUser);
 
             await emailService.sendMailHbs(email, emailActionEnum.WELCOME, {name});
 
-            const newUser = await userService.createOne({...req.body, password: hashPassword});
-            const userForResponse = userPresenter.userResponse(newUser);
             res.status(201).json(userForResponse);
         } catch (e) {
             next(e);

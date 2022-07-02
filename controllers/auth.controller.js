@@ -13,6 +13,7 @@ module.exports = {
             // await emailService.sendMail(email, emailActionEnum.WELCOME, {userName: name});
 
             await passwordService.comparePassword(hashPassword, password);
+            // await req.user.comparePasswords(password); //UserSchema.methods
 
             const tokens = tokenService.generateAuthTokens();
 
