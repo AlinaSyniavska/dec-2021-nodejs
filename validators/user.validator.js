@@ -1,6 +1,6 @@
 const Joi = require('joi');
 
-const {emailValidator, passwordValidator} = require("./common.validator");
+const {emailValidator, passwordValidator, phoneValidator} = require("./common.validator");
 
 module.exports = {
     newUserValidator: Joi.object({
@@ -8,6 +8,7 @@ module.exports = {
         age: Joi.number().integer().min(1).max(120),
         email: emailValidator.required(),
         password: passwordValidator.required(),
+        phone: phoneValidator.required(),
     }),
 
     updateUserValidator: Joi.object({
