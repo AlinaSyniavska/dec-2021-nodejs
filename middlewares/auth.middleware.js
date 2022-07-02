@@ -1,4 +1,4 @@
-const {OAuth} = require("../dataBase");
+const {OAuth, ActionToken} = require("../dataBase");
 const {CustomError} = require("../errors");
 const {tokenService, userService} = require("../services");
 const {authValidator} = require("../validators");
@@ -84,6 +84,31 @@ module.exports = {
             }
 
             req.tokenInfo = tokenInfo;
+
+            next();
+        } catch (e) {
+            next(e);
+        }
+    },
+
+
+    checkActionToken: (actionType) => async (req, res, next) => {
+        try {
+            const actionToken = req.get(config.AUTHORIZATION);
+
+            if (!actionToken) {
+                return next(new CustomError('No token', 401));
+            }
+
+            tokenService.checkActionTypeToken(actionToken, actionType);
+
+            const tokenInfo = await ActionToken.findOne({token: actionToken}).populate('userId');
+
+            if(!tokenInfo){
+                return next(new CustomError('Token not valid', 401));
+            }
+
+            req.user = tokenInfo.userId;
 
             next();
         } catch (e) {

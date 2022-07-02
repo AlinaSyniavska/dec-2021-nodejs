@@ -2,7 +2,8 @@ const jwt = require('jsonwebtoken');
 
 const {config} = require("../configs");
 const {CustomError} = require("../errors");
-const {tokenTypeEnum} = require("../enums");
+const {tokenTypeEnum, emailActionEnum} = require("../enums");
+const {FORGOT_PASSWORD} = require("../enums/email-action.enum");
 
 module.exports = {
     generateAuthTokens: (payload = {}) => {
@@ -13,6 +14,22 @@ module.exports = {
             access_token,
             refresh_token
         }
+    },
+
+    generateActionToken: (actionType, payload = {}) => {
+        let secretWord = '';
+        let expiresIn = '7d';
+
+        switch (actionType) {
+            case FORGOT_PASSWORD:
+                secretWord = config.FORGOT_PASS_ACTION_SECRET;
+                break;
+
+            default:
+                throw new CustomError('Wrong action type', 500);
+        }
+
+        return jwt.sign(payload, secretWord, {expiresIn});
     },
 
     checkToken: (token = '', tokenType = tokenTypeEnum.ACCESS) => {
@@ -27,4 +44,26 @@ module.exports = {
             throw new CustomError('Token not valid', 401);
         }
     },
+
+    checkActionTypeToken: (token = '', actionType) => {
+        try {
+            let secretWord = '';
+
+            switch (actionType) {
+                case FORGOT_PASSWORD:
+                    secretWord = emailActionEnum.FORGOT_PASSWORD;
+                    break;
+
+                default:
+                    return new CustomError('Wrong action type', 500);
+            }
+
+            return jwt.verify(token, secretWord);
+        } catch (e) {
+            // throw new CustomError('Token not valid', 401);
+            throw new Error(e.message);
+        }
+
+
+    }
 };

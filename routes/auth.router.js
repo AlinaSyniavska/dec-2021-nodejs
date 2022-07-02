@@ -2,6 +2,7 @@ const authRouter = require('express').Router();
 
 const {authController} = require("../controllers");
 const {authMiddleware} = require("../middlewares");
+const {emailActionEnum} = require("../enums");
 
 authRouter.post('/login',
     authMiddleware.isLoginBodyValid,
@@ -20,9 +21,13 @@ authRouter.post('/logoutAllDevices',
     authMiddleware.checkAccessToken,
     authController.logoutAllDevices);
 
-authRouter.post('/forgotPassword',
+authRouter.post('/password/forgot',
     authMiddleware.isEmailValid,
     authMiddleware.isUserPresentForAuth,
     authController.forgotPassword);
+
+authRouter.post('/password/forgot/set',
+    authMiddleware.checkActionToken(emailActionEnum.FORGOT_PASSWORD),
+    authController.setForgotPassword);
 
 module.exports = authRouter;
