@@ -2,7 +2,7 @@ const jwt = require('jsonwebtoken');
 
 const {config} = require("../configs");
 const {CustomError} = require("../errors");
-const {tokenTypeEnum, emailActionEnum} = require("../enums");
+const {tokenTypeEnum} = require("../enums");
 const {FORGOT_PASSWORD} = require("../enums/email-action.enum");
 
 module.exports = {
@@ -51,7 +51,7 @@ module.exports = {
 
             switch (actionType) {
                 case FORGOT_PASSWORD:
-                    secretWord = emailActionEnum.FORGOT_PASSWORD;
+                    secretWord = config.FORGOT_PASS_ACTION_SECRET;
                     break;
 
                 default:

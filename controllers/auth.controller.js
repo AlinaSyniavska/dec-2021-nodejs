@@ -113,7 +113,7 @@ module.exports = {
             const {_id} = req.user;
             const {password} = req.body;
 
-            const hashedPassword = passwordService.hashPassword(password);
+            const hashedPassword = await passwordService.hashPassword(password);
 
             const  updatedUser = await User.findByIdAndUpdate(_id, {password: hashedPassword}, {new: true});
             await ActionToken.deleteOne({actionType: emailActionEnum.FORGOT_PASSWORD, userId: _id});
