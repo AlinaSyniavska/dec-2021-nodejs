@@ -75,7 +75,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"Natan\",\r\n    \"age\": 29,\r\n    \"email\": \"NAtannel@gmail.com\",\r\n    \"password\": \"5&Ien22672222\"\r\n}",
+							"raw": "{\r\n    \"name\": \"KettyP2\",\r\n    \"age\": 22,\r\n    \"email\": \"Kattannel2@gmail.com\",\r\n    \"password\": \"5&Ienkettyy82\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -209,7 +209,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"email\": \"alina22syniavska@gmail.com\",\r\n    \"password\": \"5&Ien22672222\"\r\n}",
+							"raw": "{\r\n    \"email\": \"alina22syniavska@gmail.com\",\r\n    \"password\": \"5&Ien010101.0202\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -287,13 +287,13 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiTmF0YW4iLCJfaWQiOiI2MmJlMjZhYmJhMzA5NDBlZjdhZjU4ZmYiLCJpYXQiOjE2NTY3NzMyNjgsImV4cCI6MTY1NzM3ODA2OH0.W0LyynhSOzHNuYJApLBjZX6hfsaf3fNFb6fLWGizZQw",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiTmF0YW4iLCJfaWQiOiI2MmJlMjZhYmJhMzA5NDBlZjdhZjU4ZmYiLCJpYXQiOjE2NTY4NDg4MzEsImV4cCI6MTY1NzQ1MzYzMX0.bZyZkUpuELh9VR9PmepZCPkYRkhAnZmA3Tn9ejjr5kM",
 								"type": "text"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"password\": \"5&Ien010101.0202\"\r\n}",
+							"raw": "{\r\n    \"password\": \"!£Ien010101.0202\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"

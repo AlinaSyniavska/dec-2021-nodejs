@@ -113,13 +113,14 @@ module.exports = {
             const {_id} = req.user;
             const {password} = req.body;
 
-            const hashedPassword = passwordService.hashPassword(password);
+            const hashPassword = await passwordService.hashPassword(password);
 
-            const  updatedUser = await User.findByIdAndUpdate(_id, {password: hashedPassword}, {new: true});
+            const  updatedUser = await User.findByIdAndUpdate(_id, {password: hashPassword}, {new: true});
             await ActionToken.deleteOne({actionType: emailActionEnum.FORGOT_PASSWORD, userId: _id});
 
             res.json(updatedUser);
         } catch (e) {
+            console.log(e.message);
             next(e);
         }
     },

@@ -51,7 +51,7 @@ module.exports = {
 
             switch (actionType) {
                 case FORGOT_PASSWORD:
-                    secretWord = emailActionEnum.FORGOT_PASSWORD;
+                    secretWord = config.FORGOT_PASS_ACTION_SECRET;
                     break;
 
                 default:
