@@ -19,8 +19,5 @@ module.exports = {
         } catch (e) {
             console.error(`SMS error | to: ${phone} | error: ${e}`);
         }
-
-
-
     },
 };
