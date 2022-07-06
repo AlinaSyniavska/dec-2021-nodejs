@@ -26,9 +26,11 @@ module.exports = {
 
             const sms = smsTemplateBuilder[smsActionEnum.WELCOME](name);
 
-            await smsService.sendSMS(phone, sms);
+            await Promise.allSettled([
+                smsService.sendSMS(phone, sms),
+                emailService.sendMailHbs(email, emailActionEnum.WELCOME, {name})
+            ]);
 
-            await emailService.sendMailHbs(email, emailActionEnum.WELCOME, {name});
 
             res.status(201).json(userForResponse);
         } catch (e) {
