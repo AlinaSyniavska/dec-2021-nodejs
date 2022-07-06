@@ -1,7 +1,8 @@
-const {userService, passwordService, emailService, smsService} = require("../services");
+const {userService, passwordService, emailService, smsService, s3Service} = require("../services");
 const {userPresenter} = require("../presenters");
 const {emailActionEnum, smsActionEnum} = require("../enums");
 const {smsTemplateBuilder} = require("../common");
+const {User} = require("../dataBase");
 
 module.exports = {
     getAll: async (req, res, next) => {
@@ -20,15 +21,20 @@ module.exports = {
 
             const hashPassword = await passwordService.hashPassword(password);
             const newUser = await userService.createOne({...req.body, password: hashPassword});
+            // const newUser = await userService.createOne({...req.body, password: hashPassword});
             // const newUser = await userService.createOne(req.body);
 
-            const userForResponse = userPresenter.userResponse(newUser);
+            const {Location} = await s3Service.uploadFile(req.files.userAvatar, 'user', newUser._id);
 
-            const sms = smsTemplateBuilder[smsActionEnum.WELCOME](name);
+            const userWithPhoto = await User.findByIdAndUpdate(newUser._id, {avatar: Location}, {new: true});
+
+            const userForResponse = userPresenter.userResponse(userWithPhoto);
+            // const userForResponse = userPresenter.userResponse(newUser);
+
+/*            const sms = smsTemplateBuilder[smsActionEnum.WELCOME](name);
 
             await smsService.sendSMS(phone, sms);
-
-            await emailService.sendMailHbs(email, emailActionEnum.WELCOME, {name});
+            await emailService.sendMailHbs(email, emailActionEnum.WELCOME, {name});*/
 
             res.status(201).json(userForResponse);
         } catch (e) {

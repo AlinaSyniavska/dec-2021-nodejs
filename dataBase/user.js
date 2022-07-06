@@ -25,7 +25,8 @@ const UserSchema = new Schema({
         type: String,
         required: true,
 
-    }
+    },
+    avatar: String,
 }, {timestamps: true});
 
 UserSchema.methods = { // for single record // THIS - RECORD
