@@ -9,8 +9,8 @@ module.exports = {
             const {password: hashPassword, _id, name} = req.user;
             const {password, email} = req.body;
 
-            await emailService.sendMail('alina22syniavska@gmail.com', emailActionEnum.WELCOME, {userName: name});
-            // await emailService.sendMail(email, emailActionEnum.WELCOME, {userName: name});
+            // await emailService.sendMail('alina22syniavska@gmail.com', emailActionEnum.WELCOME, {userName: name});
+            // await emailService.sendMail(email, emailActionEnum.WELCOME, {userName: name}); // real code
 
             await passwordService.comparePassword(hashPassword, password);
             // await req.user.comparePasswords(password); //UserSchema.methods

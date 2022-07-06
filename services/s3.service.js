@@ -19,8 +19,34 @@ module.exports = {
                 Bucket: config.AWS_S3_BUCKET,
                 Key,
                 // Key: file.name,
+                ContentType: file.mimetype,
                 ACL: "public-read",
                 Body: file.data
+            })
+            .promise();
+    },
+
+    updateFile: async (file, fileURL) => {
+        const path = fileURL.split(config.AWS_S3_BUCKET_URL).pop();
+
+        return BucketConfig
+            .putObject({
+                Bucket: config.AWS_S3_BUCKET,
+                Key: path,
+                ContentType: file.mimetype,
+                ACL: "public-read",
+                Body: file.data
+            })
+            .promise();
+    },
+
+    deleteFile: async (fileURL) => {
+        const path = fileURL.split(config.AWS_S3_BUCKET_URL).pop();
+
+        return BucketConfig
+            .deleteObject({
+                Bucket: config.AWS_S3_BUCKET,
+                Key: path,
             })
             .promise();
     },

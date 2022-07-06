@@ -1,7 +1,7 @@
 {
 	"info": {
-		"_postman_id": "9029556e-7d0f-404f-a8e6-1f7cce616e2a",
-		"name": "dec-2021 JWT SMS",
+		"_postman_id": "d87805ef-89cc-45ff-aa8a-5d4ceb965b7a",
+		"name": "dec-2021 S3 (AWS)",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "20761832"
 	},
@@ -74,13 +74,39 @@
 						"method": "POST",
 						"header": [],
 						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"Maksim\",\r\n    \"age\": 18,\r\n    \"phone\": \"+380664676036\",\r\n    \"email\": \"onomaxnel@gmail.com\",\r\n    \"password\": \"5&Ien22672222\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "avatar",
+									"type": "file",
+									"src": "/C:/Users/alina/OneDrive/Робочий стіл/IMG_20220323_174537.jpg"
+								},
+								{
+									"key": "name",
+									"value": "Zara",
+									"type": "text"
+								},
+								{
+									"key": "age",
+									"value": "33",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "zara1wa@dec.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "Pa$$w0rd.2211",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "+380660203448",
+									"type": "text"
 								}
-							}
+							]
 						},
 						"url": {
 							"raw": "{{HOST}}users",
@@ -103,13 +129,20 @@
 							}
 						],
 						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"Ali\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "avatar",
+									"type": "file",
+									"src": "/C:/Users/alina/OneDrive/Робочий стіл/idea_keymap_2015.png"
+								},
+								{
+									"key": "name",
+									"value": "ZaraMi",
+									"type": "text",
+									"disabled": true
 								}
-							}
+							]
 						},
 						"url": {
 							"raw": "{{HOST}}users/:id",
@@ -209,7 +242,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"email\": \"alina22syniavska@gmail.com\",\r\n    \"password\": \"5&Ien22672222\"\r\n}",
+							"raw": "{\r\n    \"email\": \"zara1wa@dec.com\",\r\n    \"password\": \"Pa$$w0rd.2211\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -287,13 +320,13 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiTmF0YW4iLCJfaWQiOiI2MmJlMjZhYmJhMzA5NDBlZjdhZjU4ZmYiLCJpYXQiOjE2NTY3NzMyNjgsImV4cCI6MTY1NzM3ODA2OH0.W0LyynhSOzHNuYJApLBjZX6hfsaf3fNFb6fLWGizZQw",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiTmF0YW4iLCJfaWQiOiI2MmJlMjZhYmJhMzA5NDBlZjdhZjU4ZmYiLCJpYXQiOjE2NTY4NDg4MzEsImV4cCI6MTY1NzQ1MzYzMX0.bZyZkUpuELh9VR9PmepZCPkYRkhAnZmA3Tn9ejjr5kM",
 								"type": "text"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"password\": \"5&Ien010101.0202\"\r\n}",
+							"raw": "{\r\n    \"password\": \"!£Ien010101.0202\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
