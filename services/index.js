@@ -3,5 +3,4 @@ module.exports = {
     passwordService: require('./password.service'),
     tokenService: require('./token.service'),
     emailService: require('./email.service'),
-    smsService: require('./sms.service'),
 };

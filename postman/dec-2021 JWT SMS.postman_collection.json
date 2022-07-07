@@ -13,7 +13,14 @@
 					"name": "users",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Origin",
+								"value": "http://localhost:3000",
+								"type": "text",
+								"disabled": true
+							}
+						],
 						"url": {
 							"raw": "{{HOST}}users",
 							"host": [
@@ -75,7 +82,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"Maksim\",\r\n    \"age\": 18,\r\n    \"phone\": \"+380664676036\",\r\n    \"email\": \"onomaxnel@gmail.com\",\r\n    \"password\": \"5&Ien22672222\"\r\n}",
+							"raw": "{\r\n    \"name\": \"Maksim\",\r\n    \"age\": 18,\r\n    \"phone\": \"+380664676036\",\r\n    \"email\": \"oanomaxnel@gmail.com\",\r\n    \"password\": \"5&Ien22672222\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -104,7 +111,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"Ali\"\r\n}",
+							"raw": "{\r\n    \"name\": \"MMMMMM\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -209,7 +216,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"email\": \"alina22syniavska@gmail.com\",\r\n    \"password\": \"5&Ien22672222\"\r\n}",
+							"raw": "{\r\n    \"email\": \"oanomaxnel@gmail.com\",\r\n    \"password\": \"5&Ien22672222\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"

@@ -1,5 +1,6 @@
 module.exports = {
     PORT: process.env.PORT || 5001,
+    MODE: process.env.MODE,
     MONGO_URL: process.env.MONGO_URL || 'mongodb://localhost:27017/test',
     ACCESS_TOKEN: process.env.ACCESS_TOKEN || 'access_token',
     REFRESH_TOKEN: process.env.REFRESH_TOKEN || 'refresh_token',
@@ -11,4 +12,5 @@ module.exports = {
     TWILIO_ACCOUNT_SID:process.env.TWILIO_ACCOUNT_SID,
     TWILIO_AUTH_TOKEN:process.env.TWILIO_AUTH_TOKEN,
     TWILIO_NUMBER:process.env.TWILIO_NUMBER,
+    CORS_WHITE_LIST:process.env.CORS_WHITE_LIST || '',
 };

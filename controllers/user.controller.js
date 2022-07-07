@@ -1,7 +1,6 @@
-const {userService, passwordService, emailService, smsService} = require("../services");
+const {userService, passwordService, emailService} = require("../services");
 const {userPresenter} = require("../presenters");
-const {emailActionEnum, smsActionEnum} = require("../enums");
-const {smsTemplateBuilder} = require("../common");
+const {emailActionEnum} = require("../enums");
 
 module.exports = {
     getAll: async (req, res, next) => {
@@ -16,21 +15,16 @@ module.exports = {
 
     create: async (req, res, next) => {
         try {
-            const {email, password, name, phone} = req.body;
+            const {email, password, name} = req.body;
 
             const hashPassword = await passwordService.hashPassword(password);
             const newUser = await userService.createOne({...req.body, password: hashPassword});
-            // const newUser = await userService.createOne(req.body);
 
             const userForResponse = userPresenter.userResponse(newUser);
 
-            const sms = smsTemplateBuilder[smsActionEnum.WELCOME](name);
-
             await Promise.allSettled([
-                smsService.sendSMS(phone, sms),
                 emailService.sendMailHbs(email, emailActionEnum.WELCOME, {name})
             ]);
-
 
             res.status(201).json(userForResponse);
         } catch (e) {
