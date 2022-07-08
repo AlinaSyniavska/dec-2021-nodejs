@@ -2,6 +2,7 @@
   "name": "dec-2021-nodejs",
   "version": "1.0.0",
   "scripts": {
+    "start": "set MODE=dev&& node app.js",
     "start:dev": "set MODE=dev&& nodemon app.js",
     "start:prod": "set MODE=prod&& node app.js"
   },
