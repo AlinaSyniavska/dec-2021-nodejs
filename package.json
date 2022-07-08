@@ -2,6 +2,7 @@
   "name": "dec-2021-nodejs",
   "version": "1.0.0",
   "scripts": {
+    "start": "node app.js",
     "dev": "pm2 start app.js --name mainServer --watch --attach"
   },
   "dependencies": {
