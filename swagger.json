@@ -1,0 +1,59 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "dec-2021-all-nodejs"
+  },
+  "paths": {
+    "/users": {
+      "get": {
+        "description": "Get all users",
+        "tags": ["Users"],
+        "operationId": "getAll",
+        "parameters": [
+          {
+            "type": "number",
+            "in": "query",
+            "name": "page",
+            "default": 1,
+            "description": "Page number"
+          },
+          {
+            "type": "number",
+            "in": "query",
+            "name": "perPage",
+            "default": 5,
+            "required": true,
+            "description": "itemPerPage"
+          },
+          {
+            "type": "string",
+            "in": "query",
+            "name": "search",
+            "description": "Search string"
+          },
+          {
+            "type": "number",
+            "in": "query",
+            "name": "ageGte",
+            "description": "Filter age"
+          },
+          {
+            "type": "number",
+            "in": "query",
+            "name": "ageLte",
+            "description": "Filter age"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": ""
+          },
+          "400": {
+
+          }
+        }
+      }
+    }
+  }
+}

@@ -10,7 +10,7 @@ module.exports = {
       const { password, email } = req.body;
 
       // await emailService.sendMail('alina22syniavska@gmail.com', emailActionEnum.WELCOME, {userName: name});
-      await emailService.sendMail(email, emailActionEnum.WELCOME, { userName: name });
+      //   await emailService.sendMail(email, emailActionEnum.WELCOME, { userName: name });
 
       await passwordService.comparePassword(hashPassword, password);
       // await req.user.comparePasswords(password); //UserSchema.methods
@@ -59,7 +59,7 @@ module.exports = {
 
       await OAuth.deleteOne({ access_token });
 
-      await emailService.sendMailHbs(email, emailActionEnum.LOGOUT, { name, count: 1 });
+      //   await emailService.sendMailHbs(email, emailActionEnum.LOGOUT, { name, count: 1 });
 
       res.sendStatus(204);
     } catch (e) {

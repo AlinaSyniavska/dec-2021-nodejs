@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "9029556e-7d0f-404f-a8e6-1f7cce616e2a",
+		"_postman_id": "c4b8b95c-d21d-41ae-913a-17f1580bf6cb",
 		"name": "dec-2021 JWT SMS",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "20761832"
@@ -22,20 +22,34 @@
 							}
 						],
 						"url": {
-							"raw": "{{HOST}}users",
+							"raw": "{{HOST}}users?ageLte=40",
 							"host": [
 								"{{HOST}}users"
 							],
 							"query": [
 								{
-									"key": "name",
-									"value": "Ivan",
+									"key": "ageGte",
+									"value": "37",
 									"disabled": true
 								},
 								{
-									"key": "age",
-									"value": "33",
+									"key": "page",
+									"value": "1",
 									"disabled": true
+								},
+								{
+									"key": "perPage",
+									"value": "10",
+									"disabled": true
+								},
+								{
+									"key": "search",
+									"value": "maks",
+									"disabled": true
+								},
+								{
+									"key": "ageLte",
+									"value": "40"
 								}
 							]
 						}
@@ -82,7 +96,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"Maksim\",\r\n    \"age\": 18,\r\n    \"phone\": \"+380664676036\",\r\n    \"email\": \"oanomaxnel@gmail.com\",\r\n    \"password\": \"5&Ien22672222\"\r\n}",
+							"raw": "{\r\n    \"name\": \"Oleg\",\r\n    \"age\": 39,\r\n    \"phone\": \"+380664676036\",\r\n    \"email\": \"olegg@gmail.com\",\r\n    \"password\": \"5&Ien22672222\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -111,7 +125,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"MMMMMM\"\r\n}",
+							"raw": "{\r\n    \"age\": \"37\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -213,7 +227,14 @@
 					],
 					"request": {
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "Origin",
+								"value": "http://localhost:3000",
+								"type": "text",
+								"disabled": true
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\r\n    \"email\": \"oanomaxnel@gmail.com\",\r\n    \"password\": \"5&Ien22672222\"\r\n}",

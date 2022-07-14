@@ -5,9 +5,21 @@ const {emailActionEnum} = require("../enums");
 module.exports = {
     getAll: async (req, res, next) => {
         try {
-            const users = await userService.findAll(req.query).exec();
-            const usersForResponse = users.map(user => userPresenter.userResponse(user));
-            res.json(usersForResponse);
+            // const users = await userService.findAll(req.query).exec();
+            // const usersForResponse = users.map(user => userPresenter.userResponse(user));
+
+            const paginationResponse = await userService.findAllWithPagination(req.query);
+
+            const {page, perPage, data, count} = paginationResponse;
+
+            const usersForResponse = data.map(user => userPresenter.userResponse(user));
+
+            res.json({
+                page,
+                perPage,
+                users: usersForResponse,
+                count,
+            });
         } catch (e) {
             next(e);
         }

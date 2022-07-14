@@ -4,9 +4,11 @@ const { config } = require('./configs');
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
+const swaggerUi = require('swagger-ui-express');
 
 const { userRouter, authRouter } = require('./routes');
 const cronRun = require('./cron');
+const swaggerJson = require('./swagger.json');
 
 mongoose.connect(config.MONGO_URL);
 
@@ -15,16 +17,19 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-if (config.MODE !== 'prod') {
+if (config.NODE_ENV !== 'prod') {
   const morgan = require('morgan');
   app.use(morgan('dev'));
 }
 
 // app.use(cors(_configureCors()));
-app.use(cors());
+// app.use(cors());
+
 app.use('/users', userRouter);
-app.use('/auth', authRouter);
-// app.use('/auth', cors(_configureCors()), authRouter);
+// app.use('/auth', authRouter);
+app.use('/auth', cors(_configureCors()), authRouter);
+
+app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerJson));
 
 app.use('*', (req, res) => {
   res.status(404).json('Route not found');
