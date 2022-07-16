@@ -17,7 +17,7 @@ module.exports = {
             res.json({
                 page,
                 perPage,
-                users: usersForResponse,
+                data: usersForResponse,
                 count,
             });
         } catch (e) {
