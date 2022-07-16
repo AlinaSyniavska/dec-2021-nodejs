@@ -598,16 +598,45 @@
             "description": "OK",
             "schema": {
               "properties": {
-                "user": {
-                  "$ref": "#/definitions/User"
-                },
-                "access_token": {
+                "_id": {
                   "type": "string",
-                  "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NTc5MTgwNzgsImV4cCI6MTY1NzkxODk3OH0.bTkpyIDAcWpkpRiYaMrOX_xBvOlj58c8EEfLdCkxvlE"
+                  "example": "62cfe911e2e42e92f018e414",
+                  "description": "Mongo ID"
                 },
-                "refresh_token": {
+                "name": {
                   "type": "string",
-                  "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NTc5MTgwNzgsImV4cCI6MTY1NzkxODk3OH0.bTkpyIDAcWpkpRiYaMrOX_xBvOlj58c8EEfLdCkxvlE"
+                  "example": "Maria",
+                  "description": "User's name"
+                },
+                "email": {
+                  "type": "string",
+                  "example": "Maria@gmail.com",
+                  "description": "User's email"
+                },
+                "age": {
+                  "type": "number",
+                  "example": 20,
+                  "description": "User's age"
+                },
+                "password": {
+                  "type": "string",
+                  "example": "$2b$10$qKRuC2tqVWDN.DGu626rPOnPAQsZw3enhIihPUbz3GkvjGnn9DeCa",
+                  "description": "User's hashed password"
+                },
+                "phone": {
+                  "type": "string",
+                  "example": "+380123456789",
+                  "description": "User's phone"
+                },
+                "createdAt": {
+                  "type": "string",
+                  "example": "2022-07-14T09:59:45.223Z",
+                  "description": "Create date"
+                },
+                "updatedAt": {
+                  "type": "string",
+                  "example": "2022-07-14T09:59:45.223Z",
+                  "description": "Update date"
                 }
               }
             }
