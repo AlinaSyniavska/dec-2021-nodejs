@@ -589,7 +589,7 @@
           {
             "type": "string",
             "in": "header",
-            "name": "access_token",
+            "name": "action_token",
             "required": true
           }
         ],
