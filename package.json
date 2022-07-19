@@ -22,8 +22,9 @@
     "nodemon": "^2.0.18",
     "pm2": "^5.2.0",
     "pug": "^3.0.2",
-    "twilio": "^3.78.0",
-    "swagger-ui-express": "^4.5.0"
+    "socket.io": "^4.5.1",
+    "swagger-ui-express": "^4.5.0",
+    "twilio": "^3.78.0"
   },
   "devDependencies": {
     "@types/email-templates": "^8.0.4",
