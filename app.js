@@ -60,11 +60,11 @@ if (config.NODE_ENV !== 'prod') {
 }
 
 // app.use(cors(_configureCors()));
-// app.use(cors());
+app.use(cors());
 
 app.use('/users', userRouter);
-// app.use('/auth', authRouter);
-app.use('/auth', cors(_configureCors()), authRouter);
+app.use('/auth', authRouter);
+// app.use('/auth', cors(_configureCors()), authRouter);
 
 app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerJson));
 
